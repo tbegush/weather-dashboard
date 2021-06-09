@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <div id="search">
+        
+        <input class="eventText" type="text" id="searchTerm"/> <button class="searchBtn">Search!</button>
+    </div>
+    <div id="searchHistory">
+       
+            Search History
+        
+
+
+
+    </div>
+    <div id="currentWeather">
+        Current Weather: 
+        <div id="cityName">cityName: <span> </span></div>
+        <div id="date">Date</div>
+        <div id="weatherIcon">weatherIcon</div>
+        <div id="temperature">temperature: <span> </span></div>
+        <div id="humidity">humidity</div>
+        <div id="windSpeed">windSpeed</div>
+        <div id="uvIndex">UV Index</div>
+    </div>
+
+    <div id="futureWeather">
+        Future Weather
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
