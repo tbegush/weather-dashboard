@@ -23,7 +23,7 @@ function getWeather() {
   fetch(
     "https://api.openweathermap.org/data/2.5/weather?q=" +
       searchTerm +
-      "&appid=5b0024e8f1352a96b8859e9d81eabcea&units=imperial"
+      "&appid=****************************************************&units=imperial"
   )
     .then(function (response) {
       return response.json();
