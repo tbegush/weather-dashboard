@@ -7,6 +7,11 @@
 #search {
     border: 5px solid greenyellow;
 }
+
+#todaysDate {
+    border: 5px solid black;
+    font-size: 48px;
+}
 #searchHistory {
     border: 5px solid rgb(255, 0, 0);
 }
