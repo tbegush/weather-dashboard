@@ -21,6 +21,11 @@
     border: 5px solid rgb(251, 255, 0);
 }
 
+#weatherIcon {
+    width: 10%;
+    height: 10%;
+
+}
 #futureWeather {
     border: 5px solid blue;
 }

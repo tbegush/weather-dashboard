@@ -1,3 +1,6 @@
+// clears local storage on pageload
+localStorage.clear();
+//hides divs we don't need until results are returned
 $("#futureWeather").hide();
 $("#currentWeather").hide();
 $("#searchHistory").hide();
@@ -7,23 +10,16 @@ var lon;
 var searchTerm = document.querySelector("#searchTerm").value;
 
 var weatherData;
-// get weather data and save to variable weatherData.
-
-var todaysDate = moment().format("dddd MMMM Do YYYY, HHmm");
 // Convert the `todaysDate` to the "MMM Do YY" format using `moment()`
-var convertedDate = todaysDate;
-// Log `convertedDate` into the console
-console.log(convertedDate);
+var todaysDate = moment().format("dddd MMMM Do YYYY");
+$("#todaysDate").text(todaysDate);
 
-$("#todaysDate").text(convertedDate);
-
+//this grabs the weather from the API and pushes to the HTML
 function getWeather() {
   var searchTerm = document.querySelector("#searchTerm").value;
-  console.log(searchTerm);
-  fetch(
-    "https://api.openweathermap.org/data/2.5/weather?q=" +
+  fetch("https://api.openweathermap.org/data/2.5/weather?q=" +
       searchTerm +
-      "&appid=****************************************************&units=imperial"
+      "&appid=5b0024e8f1352a96b8859e9d81eabcea&units=imperial"
   )
     .then(function (response) {
       return response.json();
@@ -31,30 +27,25 @@ function getWeather() {
     .then(function (response) {
       weatherData = response;
       console.log(weatherData);
+      //show the search history and current weather at this point
       $("#currentWeather").show();
       $("#searchHistory").show();
 lat = response.coord.lat;
 lon = response.coord.lon;
-console.log(lat);
 
       localStorage.setItem(searchTerm, JSON.stringify(response));
       $("#weatherIcon").find("img").attr("src", "http://openweathermap.org/img/wn/" + response.weather[0].icon + ".png");
       $("#cityName").find("span").html(searchTerm);
+      $("#date").find("span").html(todaysDate);
       $("#temperature").find("span").html(response.main.temp);
-
       $("#humidity").find("span").html(response.main.humidity);
       $("#windSpeed").find("span").html(response.wind.speed);
-
       $("#searchHistory").append("<button class='cityButton' data-city='+searchTerm+'>"+searchTerm+"</button>");
       $("#todaysDate").html(todaysDate);
 
       getForecast(searchTerm);
     });
 };
-
-
-
-
 
 function getForecast(searchTerm) {
   // var searchTerm = document.querySelector("#searchTerm").value;
@@ -71,38 +62,39 @@ function getForecast(searchTerm) {
       console.log(forecastData);
 
       localStorage.setItem(searchTerm, JSON.stringify(response));
-$("#futureWeather").show();
+      $("#futureWeather").show();
 
       $("#forecastCityName").find("span").html(searchTerm);
       $("#forecastTemperature").find("span").html(response.list[4].main.temp);
       $("#forecastHumidity").find("span").html(response.list[4].main.humidity);
       $("#forecastWindSpeed").find("span").html(response.list[4].wind.speed);
       $("#forecastDate").find("span").html(response.list[4].dt_txt);
+      $("#forecastweatherIcon").find("img").attr("src", "http://openweathermap.org/img/wn/" + response.list[3].weather.icon + ".png");
 
-      $("#forecastCityName2").find("span").html(searchTerm);
       $("#forecastTemperature2").find("span").html(response.list[12].main.temp);
       $("#forecastHumidity2").find("span").html(response.list[12].main.humidity);
       $("#forecastWindSpeed2").find("span").html(response.list[12].wind.speed);
       $("#forecastDate2").find("span").html(response.list[12].dt_txt);
+      $("#forecastWeatherIcon2").find("img").attr("src", "http://openweathermap.org/img/wn/" + response.list[11].weather.icon + ".png");
 
-      $("#forecastCityName3").find("span").html(searchTerm);
       $("#forecastTemperature3").find("span").html(response.list[20].main.temp);
       $("#forecastHumidity3").find("span").html(response.list[20].main.humidity);
       $("#forecastWindSpeed3").find("span").html(response.list[20].wind.speed);
       $("#forecastDate3").find("span").html(response.list[20].dt_txt);
-
-      $("#forecastCityName4").find("span").html(searchTerm);
+      $("#forecastWeatherIcon3").find("img").attr("src", "http://openweathermap.org/img/wn/" + response.list[20].weather.icon  + ".png");
+      
       $("#forecastTemperature4").find("span").html(response.list[28].main.temp);
       $("#forecastHumidity4").find("span").html(response.list[28].main.humidity);
       $("#forecastWindSpeed4").find("span").html(response.list[28].wind.speed);
       $("#forecastDate4").find("span").html(response.list[28].dt_txt);
+      $("#forecastWeatherIcon4").find("img").attr("src", "http://openweathermap.org/img/wn/" + response.list[28].weather.icon + ".png");
 
-      $("#forecastCityName5").find("span").html(searchTerm);
       $("#forecastTemperature5").find("span").html(response.list[36].main.temp);
       $("#forecastHumidity5").find("span").html(response.list[36].main.humidity);
       $("#forecastWindSpeed5").find("span").html(response.list[36].wind.speed);
       $("#forecastDate5").find("span").html(response.list[36].dt_txt);
-      
+      $("#forecastWeatherIcon5").find("img").attr("src", "http://openweathermap.org/img/wn/" + response.list[36].weather.icon  + ".png");
+            
     });
 
 };
