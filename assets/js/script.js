@@ -48,7 +48,7 @@ function getWeather() {
       $("#humidity").find("span").html(response.main.humidity);
       $("#windSpeed").find("span").html(response.wind.speed);
       $("#searchHistory").append(
-        "<button class='cityButton' data-city='+searchTerm+'>" +
+        "<button class='cityButton' data-city=" + searchTerm + ">" +
           searchTerm +
           "</button>"
       );
@@ -56,6 +56,9 @@ function getWeather() {
 
       getForecast(searchTerm);
       getUvIndex();
+
+      $("#searchTerm").val("");
+
     });
 }
 
@@ -71,9 +74,27 @@ function getUvIndex() {
       return response.json();
     })
     .then(function (abc) {
-      $("#uvIndex").find("span").html(abc.daily[0].uvi);
+      var uvNumber = abc.daily[0].uvi;
+      $("#uvIndex").find("span").html(uvNumber);
       console.log(abc);
+console.log(typeof uvNumber);
+      if (uvNumber < 3) {
+        $("#uvIndex").removeClass();
+        $("#uvIndex").addClass("favorable");
+      }
+    
+      else if (uvNumber > 9) {
+        $("#uvIndex").removeClass();
+        $("#uvIndex").addClass("severe");
+      }
+
+      else {
+        $("#uvIndex").removeClass();
+        $("#uvIndex").addClass("moderate");
+      }
+
     });
+
 }
 
 function getForecast(searchTerm) {
@@ -96,12 +117,13 @@ function getForecast(searchTerm) {
       $("#forecastHumidity").find("span").html(response.list[4].main.humidity);
       $("#forecastWindSpeed").find("span").html(response.list[4].wind.speed);
       $("#forecastDate").find("span").html(response.list[4].dt_txt);
-      $("#forecastweatherIcon")
+      console.log(response.list[4].weather[0].icon);
+      $("#forecastWeatherIcon")
         .find("img")
         .attr(
           "src",
           "http://openweathermap.org/img/wn/" +
-            response.list[3].weather.icon +
+            response.list[4].weather[0].icon +
             ".png"
         );
 
@@ -116,7 +138,7 @@ function getForecast(searchTerm) {
         .attr(
           "src",
           "http://openweathermap.org/img/wn/" +
-            response.list[11].weather.icon +
+            response.list[12].weather[0].icon +
             ".png"
         );
 
@@ -131,7 +153,7 @@ function getForecast(searchTerm) {
         .attr(
           "src",
           "http://openweathermap.org/img/wn/" +
-            response.list[20].weather.icon +
+            response.list[20].weather[0].icon +
             ".png"
         );
 
@@ -146,7 +168,7 @@ function getForecast(searchTerm) {
         .attr(
           "src",
           "http://openweathermap.org/img/wn/" +
-            response.list[28].weather.icon +
+            response.list[28].weather[0].icon +
             ".png"
         );
 
@@ -161,7 +183,7 @@ function getForecast(searchTerm) {
         .attr(
           "src",
           "http://openweathermap.org/img/wn/" +
-            response.list[36].weather.icon +
+            response.list[36].weather[0].icon +
             ".png"
         );
     });
@@ -172,24 +194,3 @@ $(".cityButton").on("click", getWeather);
 // hit enter - if the search term is "changed" this will work.
 $("#searchTerm").on("change", getWeather);
 
-$(document).ready(function () {
-  $(".row").each(function () {
-    var time = $(this).data("time");
-    var event = localStorage.getItem(time);
-    $(this).find(".display-event").text(event);
-
-    var currentTime = moment().format("HH00");
-
-    // probably can use this IF statement for UV index.
-
-    //   if (time > currentTime) {
-    //     $(this).addClass("future");
-    //   }
-    //   else if (time < currentTime) {
-    //     $(this).addClass("past");
-    //   }
-    //   else {
-    //       $(this).addClass("present");
-    //   }
-  });
-});

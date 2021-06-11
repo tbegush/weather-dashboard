@@ -1,31 +1,41 @@
 * {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-  }
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
 
 #search {
-    border: 5px solid greenyellow;
+  border: 5px solid greenyellow;
 }
 
 #todaysDate {
-    border: 5px solid black;
-    font-size: 48px;
+  border: 5px solid black;
+  font-size: 48px;
 }
 #searchHistory {
-    border: 5px solid rgb(255, 0, 0);
+  border: 5px solid rgb(255, 0, 0);
 }
-
 
 #currentWeather {
-    border: 5px solid rgb(251, 255, 0);
+  border: 5px solid rgb(251, 255, 0);
 }
 
-#weatherIcon {
-    width: 10%;
-    height: 10%;
-
+.iconClass {
+  width: 10%;
+  height: 10%;
 }
 #futureWeather {
-    border: 5px solid blue;
+  border: 5px solid blue;
+}
+
+.favorable {
+  background-color: #00d636;
+}
+
+.severe {
+  background-color: #b60900;
+}
+
+.moderate {
+  background-color: #d177dd;
 }
