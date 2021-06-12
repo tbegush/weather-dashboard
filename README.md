@@ -85,7 +85,7 @@
 
 
 
-<!-- ABOUT THE PROJECT -->
+<!-- ABOUT THE PROJECT  -->
 ## About The Project
 
 ![Weather Dashboard Screen Shot](./weatherscreenshot.png)
