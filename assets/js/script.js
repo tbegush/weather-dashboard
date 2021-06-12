@@ -117,7 +117,7 @@ function getForecast(searchTerm) {
       $("#forecastHumidity").find("span").html(response.list[4].main.humidity);
       $("#forecastWindSpeed").find("span").html(response.list[4].wind.speed);
       $("#forecastDate").find("span").html(response.list[4].dt_txt);
-      console.log(response.list[4].weather[0].icon);
+      console.log(response);
       $("#forecastWeatherIcon")
         .find("img")
         .attr(
@@ -191,6 +191,6 @@ function getForecast(searchTerm) {
 
 $(".cityButton").on("click", getWeather);
 
-// hit enter - if the search term is "changed" this will work.
+// if the search term is "changed" this will work, a click, blur, enter...
 $("#searchTerm").on("change", getWeather);
 
