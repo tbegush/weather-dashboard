@@ -47,7 +47,7 @@
     <a href="https://github.com/tbegush/weather-dashboard"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/tbegush/weather-dashboard">View Demo</a>
+    <a href="https://tbegush.github.io/weather-dashboard/">View Demo</a>
     ·
     <a href="https://github.com/tbegush/weather-dashboard/issues">Report Bug</a>
     ·
@@ -88,7 +88,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Weather Dashboard Screen Shot][./weatherscreenshot.png](./weatherscreenshot.png)
+![Weather Dashboard Screen Shot](./weatherscreenshot.png)
 
 Here's a blank template to get started:
 **To avoid retyping too much info. Do a search and replace with your text editor for the following:**
